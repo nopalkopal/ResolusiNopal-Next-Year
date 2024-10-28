@@ -1,12 +1,12 @@
 //SmartHome IoT NopalKopal
 
-#include <ESP8266WiFi.h>
-#include <ThingESP.h>
+#include <ESP8266WiFi.h> //library untuk esp8266
+#include <ThingESP.h> // library ThingEsp yang bisa kalian unduh dari arduino IDE
 
 ThingESP8266 thing("NopalKopal", "SmartHomeWA", "123456789");
 /*ThingsESP8266 things("username akun thingsEsp", "Nama Project", "Kode Project Devices");*/
 
-#define Relay1 0
+#define Relay1 0 //mendefinisikan pin apa yang dipakai
 #define Relay2 2
 #define Relay3 3
 
@@ -20,15 +20,14 @@ const long INTERVAL = 6000;
 void setup()
 {
   Serial.begin(115200);
-  pinMode(Relay1, OUTPUT);
+  pinMode(Relay1, OUTPUT); //mengatur relay sebagai output
   pinMode(Relay2, OUTPUT);
   pinMode(Relay3, OUTPUT);
 
-  digitalWrite(Relay1, HIGH);
+  digitalWrite(Relay1, HIGH); //mengatur kondisi awal relay agar mati.
   digitalWrite(Relay2, HIGH);
   digitalWrite(Relay3, HIGH);
-  thing.SetWiFi("Naufal", "Makuyi131107");
-  /*things.SetWifi("Username wifi", "Password wifi")*/
+  things.SetWifi("Username wifi", "Password wifi");
 
   thing.initDevice();
 }
@@ -63,29 +62,10 @@ String HandleResponse(String query)
     digitalWrite(Relay3, HIGH);
     return "Lampu 3 sudah wafat tuan";
   }
-  else if (query == "Semua lampu tolong dinyalakan dong") {
-    digitalWrite(Relay1, LOW);
-    digitalWrite(Relay2, LOW);
-    digitalWrite(Relay3, LOW);
-    return "Semua lampu sudah saya bangunkan tuan";
-  }
-  else if (query == "Semua lampu tolong dimatikan ya") {
-    digitalWrite(Relay1, HIGH);
-    digitalWrite(Relay2, HIGH);
-    digitalWrite(Relay3, HIGH);
-    return "Semua lampu sudah saya ninabobokan tuan";
-  }
-
   else if (query == "kabar lampu gimana?"){
     return digitalRead(Relay1) ? "Lampu 1 mati" : "Lampu 1 hidup";
   }
-  else if (query == "kabar lampu gimana?"){
-    return digitalRead(Relay2) ? "Lampu 2 mati" : "Lampu 2 hidup";
-  }
-  else if (query == "kabar lampu gimana?"){
-    return digitalRead(Relay3) ? "Lampu 3 mati" : "Lampu 3 hidup";
-  }
-
+    
   else if (query == "halo masbro"){
    return "ada apa icikbos?";
   }
