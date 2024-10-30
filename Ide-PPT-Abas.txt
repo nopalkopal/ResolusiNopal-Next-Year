@@ -1,0 +1,31 @@
+Background Putih Combo Kuning dan Biru tua
+tema Simple dan minimalis.
+
+
+Cover (Slide 1)
+- Judul (IOT SMARTHOME MENGGUNAKAN ESP8266 DAN WHATSAPP)
+- Logo Sekolah
+- Nama / NIS / XII TE 1
+
+Daftar Isi (Slide 2)
+- Pengenalan ESP8266
+- Pengenalan WhatsApp 
+- Pembuatan Bot WhatsApp 
+- Estimasi Biaya
+- Cara pembuatan dan cara kerja (Gambar rangkaian)
+
+Pengenalan Presenter (Slide 3)
+- Gambar muka beserta nama dan cita cita 
+
+
+Penutup (Slide )
+- Harapan
+- Q&A
+- Quotes
+
+
+Lampiran (Slide Terakhir)
+- Program Arduino IDE
+- Step by step pembuatan bot WhatsApp di ThingsEsp dan Twilio (Gambar)
+
+Gajah duduk🐘 
