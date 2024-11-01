@@ -11,6 +11,7 @@ Cover (Slide 1)
 Daftar Isi (Slide 2)
 - Pengenalan ESP8266
 - Pengenalan Modul Relay 4Channel 
+- Pengenalan Servo
 - Pengenalan WhatsApp 
 - Pengenalan Twilio
 - Estimasi Biaya
@@ -26,24 +27,27 @@ dirilis pada September 2014, harganya yang sangat terjangkau, dan kemampuannya y
 Pengenalan Modul Relay 4Channel  (Slide 5)
 Modul Relay 4 Channel adalah perangkat elektronika yang memungkinkan pengguna mengontrol 4 perangkat listrik secara terpisah menggunakan sinyal kontrol dari mikrokontroler. Setiap channel dapat bekerja independen dengan kemampuan memutus dan menyambungkan arus listrik hingga 10A/250V AC atau 10A/30V DC. Modul ini umumnya menggunakan konfigurasi NO (Normally Open) dan NC (Normally Closed), dilengkapi optocoupler untuk isolasi tegangan antara rangkaian kontrol dan beban, serta kompatibel dengan berbagai mikrokontroler seperti Arduino, ESP8266, dan Raspberry Pi. Desainnya sederhana, mudah dipasang, dan sangat cocok untuk proyek otomasi rumah, industri, dan elektronika.
 
-Pengenalan WhatsApp (Slide 6) 
+Pengenalan Servo  (Slide 6)
+Servo adalah motor presisi dengan sistem kontrol umpan balik yang mampu menggerakkan komponen mekanis pada sudut dan posisi tertentu. Terdiri dari motor DC, gear, dan rangkaian kontrol, servo beroperasi menggunakan sinyal PWM dengan tegangan 4.8-7.2V. Jenis servo meliputi standar (0-180 derajat), continuous (360 derajat), digital, dan analog. Digunakan dalam robotika, drone, model RC, dan industri, servo unggul dalam presisi gerakan, kontrol posisi akurat, dan ukuran kompak. Pertama dikembangkan tahun 1930-an, servo terus berkembang dengan teknologi modern untuk berbagai aplikasi elektronika dan mekanik.
+
+Pengenalan WhatsApp (Slide 7) 
 WhatsApp adalah aplikasi perpesanan instan berbasis internet yang dikembangkan oleh Brian Acton dan Jan Koum pada 2009. Didirikan di California, AS, aplikasi ini memungkinkan pengguna mengirim pesan teks, suara, video, dokumen, dan melakukan panggilan gratis melalui internet. Pada 2014, Facebook (kini Meta) mengakuisisi WhatsApp seharga $19 miliar. Saat ini, aplikasi ini memiliki lebih dari 2 miliar pengguna aktif bulanan di seluruh dunia, mendukung berbagai bahasa, dan tersedia di platform iOS, Android, dan desktop. Fitur utamanya mencakup enkripsi end-to-end, berbagi lokasi, status, panggilan video, dan fitur bisnis.
 
-Pengenalan Twilio (Slide 7)
+Pengenalan Twilio (Slide 8)
 Twilio adalah platform cloud komunikasi yang didirikan pada 2008 oleh Jeff Lawson di San Francisco, California. Perusahaan ini menyediakan API (Application Programming Interface / Aplikasi Pemrograman Antarmuka) yang memungkinkan pengembang mengintegrasikan layanan komunikasi seperti SMS, panggilan suara, video, dan chat ke dalam aplikasi mereka. Dengan teknologi berbasis cloud, Twilio memungkinkan perusahaan dan pengembang mengirim pesan, menerima panggilan, dan berkomunikasi melalui berbagai saluran digital secara mudah. Layanannya digunakan oleh ribuan perusahaan global, termasuk Uber, Airbnb, dan Netflix, untuk mengoptimalkan komunikasi pelanggan.
 
-Estimasi Biaya (Slide 8)
+Estimasi Biaya (Slide 9)
 - Tabel 
 
-Cara pembuatan dan cara kerja (Slide 9)
+Cara pembuatan dan cara kerja (Slide 10)
 - Dikasih Gambar Rangkaian dan Video Simulasi
 
-Penutup (Slide 10)
+Penutup (Slide 11)
 - Harapan
 - Q&A
 - Quotes
 
-Lampiran (Slide Terakhir)
+Lampiran (Slide 12)
 - Program Arduino IDE
 - Step by step pembuatan bot WhatsApp di ThingsEsp dan Twilio (Gambar)
 
