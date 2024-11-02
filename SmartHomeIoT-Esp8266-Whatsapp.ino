@@ -2,6 +2,7 @@
 
 #include <ESP8266WiFi.h> //library untuk esp8266
 #include <ThingESP.h> // library ThingEsp yang bisa kalian unduh dari arduino IDE
+#include <Servo.h> //library untuk Servo
 
 ThingESP8266 thing("NopalKopal", "SmartHomeWA", "123456789");
 /*ThingsESP8266 things("username akun thingsEsp", "Nama Project", "Kode Project Devices");*/
@@ -10,7 +11,8 @@ ThingESP8266 thing("NopalKopal", "SmartHomeWA", "123456789");
 #define Relay2 2
 #define Relay3 3
 
-
+Servo myservo;
+#define Servo 4
 unsigned long previousMillis = 0;
 /*Variabel ini digunakan untuk menyimpan waktu terakhir suatu peristiwa terjadi, diukur dalam milidetik*/
 
@@ -27,6 +29,7 @@ void setup()
   digitalWrite(Relay1, HIGH); //mengatur kondisi awal relay agar mati.
   digitalWrite(Relay2, HIGH);
   digitalWrite(Relay3, HIGH);
+  myServo.attach(Servo);  // menambahkan pin servo
   things.SetWifi("Username wifi", "Password wifi");
 
   thing.initDevice();
@@ -65,6 +68,12 @@ String HandleResponse(String query)
   else if (query == "kabar lampu gimana?"){
     return digitalRead(Relay1) ? "Lampu 1 mati" : "Lampu 1 hidup";
   }
+  else if (query.startsWith("buka pagar ")) {
+    int angle = query.substring(9).toInt(); // untuk meng-ekstrak posisi yang kita perintahkan dari pesan WA
+    if (angle >= 0 && angle <= 180) {       // untuk memastikan sudut berapa dalam jangkauan
+      myServo.write(angle);
+      return "pagar sudah terbuka sebesar " + String(angle) + " derajat";
+    }
     
   else if (query == "halo masbro"){
    return "ada apa icikbos?";
@@ -84,6 +93,9 @@ String HandleResponse(String query)
 
 void loop()
 {
-  thing.Handle();
-
+  String message = thing.readMessage();
+  if (message != "") {
+    String response = HandleResponse(message);
+    thing.sendMessage(response);
+  }
 }
