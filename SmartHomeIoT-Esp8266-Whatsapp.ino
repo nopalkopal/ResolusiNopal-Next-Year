@@ -75,14 +75,13 @@ String HandleResponse(String query)
   else if (query == "kabar lampu 3 gimana?"){
     return digitalRead(Relay3) ? "Lampu 3 mati" : "Lampu 3 hidup";
   }
-  else if (query.startsWith("buka pagar ")) {
-    int angle = query.substring(11).toInt(); // Mengambil angka dari query
-    if (angle >= 0 && angle <= 180) {
-    myservo.write(angle);
-      return "Pagar terbuka sebesar " + String(angle) + " derajat";
-      } else {
-        return "Sudut tidak valid. Harap masukkan antara 0 dan 180.";
-        }
+  else if (query == "buka pagar") {
+    myservo.write(180); // Servo bergerak ke 180 derajat
+    return "Pagar sudah terbuka icikbos";
+  } 
+  else if (query == "tutup pagar") {
+    myservo.write(0); // Servo bergerak kembali ke 0 derajat
+    return "Pagar sudah tertutup icikbos";
   }
   else if (query == "halo masbro"){
    return "ada apa icikbos?";
