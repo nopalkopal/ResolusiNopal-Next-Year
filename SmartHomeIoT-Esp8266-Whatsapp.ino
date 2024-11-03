@@ -13,6 +13,7 @@ ThingESP8266 thing("NopalKopal", "SmartHomeWA", "123456789");
 
 Servo myservo;
 #define Servo 4
+
 unsigned long previousMillis = 0;
 /*Variabel ini digunakan untuk menyimpan waktu terakhir suatu peristiwa terjadi, diukur dalam milidetik*/
 
@@ -29,8 +30,8 @@ void setup()
   digitalWrite(Relay1, HIGH); //mengatur kondisi awal relay agar mati.
   digitalWrite(Relay2, HIGH);
   digitalWrite(Relay3, HIGH);
-  myServo.attach(Servo);  // menambahkan pin servo
-  things.SetWifi("Username wifi", "Password wifi");
+  myservo.attach(Servo);  // menambahkan pin servo
+  thing.SetWiFi("Username WiFi", "Password WiFi");
 
   thing.initDevice();
 }
@@ -65,16 +66,24 @@ String HandleResponse(String query)
     digitalWrite(Relay3, HIGH);
     return "Lampu 3 sudah wafat tuan";
   }
-  else if (query == "kabar lampu gimana?"){
+  else if (query == "kabar lampu 1 gimana?"){
     return digitalRead(Relay1) ? "Lampu 1 mati" : "Lampu 1 hidup";
   }
+  else if (query == "kabar lampu 2 gimana?"){
+    return digitalRead(Relay2) ? "Lampu 2 mati" : "Lampu 2 hidup";
+  }
+  else if (query == "kabar lampu 3 gimana?"){
+    return digitalRead(Relay3) ? "Lampu 3 mati" : "Lampu 3 hidup";
+  }
   else if (query.startsWith("buka pagar ")) {
-    int angle = query.substring(9).toInt(); // untuk meng-ekstrak posisi yang kita perintahkan dari pesan WA
-    if (angle >= 0 && angle <= 180) {       // untuk memastikan sudut berapa dalam jangkauan
-      myServo.write(angle);
-      return "pagar sudah terbuka sebesar " + String(angle) + " derajat";
-    }
-    
+    int angle = query.substring(11).toInt(); // Mengambil angka dari query
+    if (angle >= 0 && angle <= 180) {
+    myservo.write(angle);
+      return "Pagar terbuka sebesar " + String(angle) + " derajat";
+      } else {
+        return "Sudut tidak valid. Harap masukkan antara 0 dan 180.";
+        }
+  }
   else if (query == "halo masbro"){
    return "ada apa icikbos?";
   }
@@ -86,16 +95,11 @@ String HandleResponse(String query)
   else if (query == "sip, makasih masbro"){
     return "sama sama icikbos yang ganteng, soleh, istrinya cantik, kaya raya, dan baik hati serta tidak sombong";
   }
-  else return "Your query was invalid..";
-
+  else return "Icikbos ngomong apa?";
 }
 
 
-void loop()
-{
-  String message = thing.readMessage();
-  if (message != "") {
-    String response = HandleResponse(message);
-    thing.sendMessage(response);
-  }
+void loop() {
+  thing.Handle();
 }
+
