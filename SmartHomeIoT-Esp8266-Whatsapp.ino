@@ -31,6 +31,8 @@ void setup()
   digitalWrite(Relay2, HIGH);
   digitalWrite(Relay3, HIGH);
   myservo.attach(Servo);  // menambahkan pin servo
+  myservo.write(0);  // Posisi awal servo
+  
   thing.SetWiFi("Naufal", "Makuyi131107");
 
   thing.initDevice();
@@ -101,6 +103,9 @@ String HandleResponse(String query)
   else if (query == "tutup pagar") {
     myservo.write(0); // Servo bergerak kembali ke 0 derajat
     return "Pagar sudah tertutup icikbos";
+  }
+  else if (query == "kondisi pagar") {
+    return myservo.read() == 180 ? "Pagar terbuka" : "Pagar tertutup";
   }
   else if (query == "halo masbro"){
    return "ada apa icikbos?";
