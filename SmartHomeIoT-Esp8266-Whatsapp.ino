@@ -31,7 +31,7 @@ void setup()
   digitalWrite(Relay2, HIGH);
   digitalWrite(Relay3, HIGH);
   myservo.attach(Servo);  // menambahkan pin servo
-  thing.SetWiFi("Username WiFi", "Password WiFi");
+  thing.SetWiFi("Naufal", "Makuyi131107");
 
   thing.initDevice();
 }
@@ -65,6 +65,25 @@ String HandleResponse(String query)
   else if (query == "lampu 3 dimatikan dong") {
     digitalWrite(Relay3, HIGH);
     return "Lampu 3 sudah wafat tuan";
+  }
+  else if (query == "matikan semua lampu") {
+    digitalWrite(Relay1, HIGH);
+    digitalWrite(Relay2, HIGH);
+    digitalWrite(Relay3, HIGH);
+    return "Semua lampu dah mati";
+  }
+  else if (query == "hidupin semua lampu") {
+    digitalWrite(Relay1, LOW);
+    digitalWrite(Relay2, LOW);
+    digitalWrite(Relay3, LOW);
+    return "Semua lampu dah hidup";
+  }
+  else if (query == "kabar semua lampu") {
+    String status = "Status lampu:\n";
+    status += "Lampu 1: " + String(digitalRead(Relay1) ? "mati" : "hidup") + "\n";
+    status += "Lampu 2: " + String(digitalRead(Relay2) ? "mati" : "hidup") + "\n";
+    status += "Lampu 3: " + String(digitalRead(Relay3) ? "mati" : "hidup");
+    return status;
   }
   else if (query == "kabar lampu 1 gimana?"){
     return digitalRead(Relay1) ? "Lampu 1 mati" : "Lampu 1 hidup";
@@ -101,4 +120,3 @@ String HandleResponse(String query)
 void loop() {
   thing.Handle();
 }
-
