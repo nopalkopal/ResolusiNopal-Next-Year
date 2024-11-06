@@ -40,7 +40,7 @@ Estimasi Biaya (Slide 9)
 - Tabel 
 
 Cara pembuatan dan cara kerja (Slide 10)
-- Dikasih Gambar Rangkaian dan Video Simulasi
+- Video Simulasi
 
 Penutup (Slide 11)
 - Harapan
@@ -50,5 +50,7 @@ Penutup (Slide 11)
 Lampiran (Slide 12)
 - Program Arduino IDE
 - Step by step pembuatan bot WhatsApp di ThingsEsp dan Twilio (Gambar)
+- Gambar Rangkaian
 
+Proses Presentasi harus diselesaikan dalam waktu 15 Menit.
 Gajah duduk🐘 
