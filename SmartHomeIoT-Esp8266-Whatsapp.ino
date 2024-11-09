@@ -13,6 +13,12 @@ ThingESP8266 thing("NopalKopal", "SmartHomeWA", "123456789");
 
 Servo myservo;
 #define Servo 4
+#define Toggle1 10
+#define Toggle2 9
+#define Toggle3 5
+
+bool relayState[3] = {false, false, false}; // Status relay || Relay Status
+bool manualControl = true; // Jika false, kontrol WhatsApp aktif || If false, whatsapp control active
 
 unsigned long previousMillis = 0;
 /*Variabel ini digunakan untuk menyimpan waktu terakhir suatu peristiwa terjadi, diukur dalam milidetik.
@@ -28,6 +34,9 @@ void setup()
   pinMode(Relay1, OUTPUT); //Mengatur relay sebagai output || set relay as output
   pinMode(Relay2, OUTPUT);
   pinMode(Relay3, OUTPUT);
+  pinMode (Toggle1, INPUT_PULLUP);
+  pinMode (Toggle2, INPUT_PULLUP);
+  pinMode (Toggle3, INPUT_PULLUP);
 
   digitalWrite(Relay1, HIGH); //Mengatur kondisi awal relay agar mati || Set the initial condition of the relay to off.
   digitalWrite(Relay2, HIGH);
@@ -122,10 +131,47 @@ String HandleResponse(String query)
   else if (query == "sip, makasih masbro"){
     return "sama sama icikbos yang ganteng, soleh, istrinya cantik, kaya raya, dan baik hati serta tidak sombong";
   }
+  else if (query == "mode manual") {
+    manualControl = true; // Kembali ke kontrol toggle switch || Back to Manual mode
+    return "Mode manual aktif";
+  }
   else return "Icikbos ngomong apa?";
 }
 
 
 void loop() {
   thing.Handle();
+  
+  String message = thing.readMessage();
+  if (message != "") {
+    manualControl = false; 
+    String response = HandleResponse(message); 
+    thing.sendMessage(response);
+  }
+   if (manualControl) {
+    // Mengontrol relay menggunakan toggle switch || Controlling relay with toggle switch
+    if (digitalRead(Toggle1) == LOW) {
+      digitalWrite(Relay1, LOW);
+      relayState[0] = true;
+    } else {
+      digitalWrite(Relay1, HIGH);
+      relayState[0] = false;
+    }
+
+    if (digitalRead(Toggle2) == LOW) {
+      digitalWrite(Relay2, LOW);
+      relayState[1] = true;
+    } else {
+      digitalWrite(Relay2, HIGH);
+      relayState[1] = false;
+    }
+
+    if (digitalRead(Toggle3) == LOW) {
+      digitalWrite(Relay3, LOW);
+      relayState[2] = true;
+    } else {
+      digitalWrite(Relay3, HIGH);
+      relayState[2] = false;
+    }
+  }
 }
