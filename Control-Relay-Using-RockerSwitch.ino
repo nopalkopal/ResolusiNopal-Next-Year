@@ -2,7 +2,7 @@
 #include <ThingESP.h>
 
 ThingESP8266 thing("NopalKopal", "SmartHomeWA", "123456789");
-/*ThingsESP8266 things("account username thingsEsp", "Project name", "Project Devices Code");*/
+/*ThingESP8266 things("account username thingsEsp", "Project name", "Project Devices Code");*/
 
 #define Relay1 0
 #define Relay2 2
