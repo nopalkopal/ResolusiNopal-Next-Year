@@ -5,7 +5,7 @@
 #include <Servo.h> //Library untuk Servo || Library for Servo
 
 ThingESP8266 thing("NopalKopal", "SmartHomeWA", "123456789");
-/*ThingsESP8266 things("account username thingsEsp", "Project name", "Project Devices Code");*/
+/*ThingESP8266 things("account username thingsEsp", "Project name", "Project Devices Code");*/
 
 #define Relay1 0 //mendefinisikan pin apa yang dipakai || defines what pins are used
 #define Relay2 2
