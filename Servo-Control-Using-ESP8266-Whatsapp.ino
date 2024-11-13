@@ -15,7 +15,7 @@ unsigned long previousMillis = 0;
 const long INTERVAL = 6000;  
 /*This variable is used to set the interval in milliseconds (in this case, 6000 milliseconds or 6 seconds).*/
 
-Void setup(){
+void setup(){
   Serial.begin(115200);
   myservo.attach(Servo);  // Add servo pin
   myservo.write(0);  // Servo start position
