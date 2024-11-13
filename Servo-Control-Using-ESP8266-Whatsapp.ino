@@ -4,7 +4,7 @@
 #include <ThingESP.h> // Library ThingEsp yang bisa kalian unduh dari arduino IDE || Library ThingsEsp You can download it on Arduino IDE
 #include <Servo.h> //Library untuk Servo || Library for Servo
 
-ThingsESP8266 things("ThingESP account usernamep", "Project name", "Project Devices Code");
+ThingESP8266 things("ThingESP account usernamep", "Project name", "Project Devices Code");
 
 Servo myservo;
 #define Servo 4 //defines what pin are use
@@ -15,7 +15,7 @@ unsigned long previousMillis = 0;
 const long INTERVAL = 6000;  
 /*This variable is used to set the interval in milliseconds (in this case, 6000 milliseconds or 6 seconds).*/
 
-Void Setup(){
+Void setup(){
   Serial.begin(115200);
   myservo.attach(Servo);  // Add servo pin
   myservo.write(0);  // Servo start position
